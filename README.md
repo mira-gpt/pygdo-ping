@@ -4,6 +4,9 @@
 
 `ping` answers in the classic form `Pong! Compliance (user) = <duration>`.
 
+`hping <hostname>` makes one normal Unix ICMP ping with a one-second network
+timeout. It accepts a single hostname or IP address, never a shell command.
+
 1. Start a round with `pinggame`.
 2. The Dog announces `PING!`.
 3. The first user to send `pong` wins; their reaction time is compared against

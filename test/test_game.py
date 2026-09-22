@@ -5,6 +5,7 @@ from gdo.base.Application import Application
 from gdo.base.Render import Mode
 from gdo.date.GDT_Duration import GDT_Duration
 from gdo.ping.Game import PingGame
+from gdo.ping.method.hping import hping
 from gdo.ping.method.ping import ping
 
 
@@ -39,3 +40,17 @@ class PingGameTest(unittest.TestCase):
         )
         self.assertEqual('Gizmore', PingGame.WORLD[0].user_name)
         self.assertEqual('Golden1', PingGame.USERS[6].user_name)
+
+    def test_hping_accepts_hosts_but_not_shell_like_values(self):
+        self.assertTrue(hping.valid_host('example.org'))
+        self.assertTrue(hping.valid_host('192.0.2.1'))
+        self.assertFalse(hping.valid_host('-c1'))
+        self.assertFalse(hping.valid_host('example.org;id'))
+
+    def test_hping_summary_prefers_round_trip_time(self):
+        output = (
+            'PING example.org (192.0.2.1) 56(84) bytes of data.\n'
+            '64 bytes from 192.0.2.1: icmp_seq=1 ttl=57 time=12.3 ms\n'
+            'rtt min/avg/max/mdev = 12.300/12.300/12.300/0.000 ms\n'
+        )
+        self.assertEqual('rtt min/avg/max/mdev = 12.300/12.300/12.300/0.000 ms', hping.summarize(output))
