@@ -1,0 +1,4 @@
+[ping]
+mt_ping = "Ping"
+md_ping = "Replies with the time needed to handle the ping command."
+msg_pong = "PONG (%s)"

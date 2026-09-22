@@ -1,0 +1,1 @@
+# pygdo-ping has no dependencies beyond PyGDO's base and date modules.
