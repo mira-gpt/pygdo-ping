@@ -1,4 +1,10 @@
 [ping]
 mt_ping = "Ping"
-md_ping = "Replies with the time needed to handle the ping command."
-msg_pong = "PONG (%s)"
+md_ping = "A channel icebreaker: first pong wins the round."
+msg_ping_compliance = "Pong! Compliance (%s) = %s"
+msg_pinggame_start = "PING! First to $pong wins."
+err_pinggame_active = "A ping round is already active here; first $pong wins."
+err_pong_no_game = "No ping round is active here. Start one with $pinggame."
+msg_pong_winner = "%s wins in %s. New records: %s."
+msg_ping_records = "Ping records: %s"
+msg_ping_records_empty = "No ping records have been set during this Dog run."
